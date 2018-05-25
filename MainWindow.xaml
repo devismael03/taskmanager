@@ -1,0 +1,41 @@
+﻿<Window x:Class="TaskManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskManager"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListView Grid.Row="0" Grid.ColumnSpan="2" Name="processesList" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Id, StringFormat='Id: {0}'}"/>
+                        <TextBlock Text="{Binding Title, StringFormat='Title: {0}'}"/>
+                        <TextBlock Text="{Binding Ram, StringFormat='Ram Occupation: {0}'}"/>
+                        <TextBlock Text="{Binding Cpu, StringFormat='CPU: {0}'}"/>
+                        <TextBlock Text="{Binding Threads, StringFormat='Threads: {0}'}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Content="End Process" Grid.Row="1" Grid.Column="0" Click="Button_Click"></Button>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+           </Grid.ColumnDefinitions>
+            <TextBox Name="processName" Grid.Column="0" ></TextBox>
+            <Button Name="addProcess" Grid.Column="1" Content="Add Process" Click="addProcess_Click"></Button>
+        </Grid>
+    </Grid>
+</Window>
